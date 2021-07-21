@@ -27,4 +27,10 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/dockerfile'
         tags: |
           $(tag)
-    
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        containerRegistry: 'DockerHubMatiche15'
+        repository: 'node_2'
+        command: 'buildAndPush'
+        Dockerfile: '**/dockerfile'
